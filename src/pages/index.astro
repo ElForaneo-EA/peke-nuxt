@@ -6,10 +6,27 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>PEKEMIND - Tranquilidad para padres de bebés</title>
 		<style>
+			:root {
+				--font-heading: "Proxima Nova", "Avenir Next", "Montserrat", sans-serif;
+				--font-body: "Roboto", sans-serif;
+				--color-ceruleo: #98C1D9;
+				--color-lavanda: #C3B1E1;
+				--color-beige: #E0D8B0;
+				--color-text: #2f3240;
+				--color-text-muted: #5f6370;
+				--color-white: #ffffff;
+				--color-ceruleo-soft: #e8f2f8;
+				--color-lavanda-soft: #f1ebf9;
+				--color-beige-soft: #f6f2e0;
+			}
+
 			* {
 				margin: 0;
 				padding: 0;
@@ -17,10 +34,64 @@
 			}
 			
 			body {
-				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-family: var(--font-body);
 				line-height: 1.6;
-				color: #333;
-				background: #fff;
+				color: var(--color-text);
+				background: var(--color-white);
+			}
+
+			h1, h2, h3, h4, h5, h6, .btn-primary {
+				font-family: var(--font-heading);
+				letter-spacing: 0.01em;
+			}
+
+			p, li, a, span {
+				font-family: var(--font-body);
+			}
+
+			@keyframes fadeUpSoft {
+				0% {
+					opacity: 0;
+					transform: translateY(26px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			@keyframes floatBreath {
+				0%,
+				100% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+			}
+
+			.hero h1,
+			.hero p,
+			.pain-image-placeholder,
+			.cta-section:first-of-type .btn-primary {
+				opacity: 0;
+				animation: fadeUpSoft 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+			}
+
+			.hero h1 {
+				animation-delay: 120ms;
+			}
+
+			.hero p {
+				animation-delay: 320ms;
+			}
+
+			.pain-image-placeholder {
+				animation-delay: 520ms;
+			}
+
+			.cta-section:first-of-type .btn-primary {
+				animation-delay: 700ms;
 			}
 			
 			.container {
@@ -30,7 +101,7 @@
 			}
 			
 			.hero {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, var(--color-ceruleo) 0%, var(--color-lavanda) 100%);
 				color: white;
 				padding: 80px 0;
 				text-align: center;
@@ -51,33 +122,111 @@
 			
 			.pain-image {
 				padding: 60px 0;
-				background: #f8f9fa;
+				background: var(--color-beige-soft);
 				text-align: center;
+				position: relative;
+				z-index: 2;
 			}
 			
 			.pain-image-placeholder {
-				background: #e9ecef;
-				border: 3px dashed #adb5bd;
+				background: transparent;
+				border: none;
 				border-radius: 12px;
-				padding: 60px 40px;
-				margin: 0 auto;
+				padding: 0;
+				margin: -110px auto 0;
 				max-width: 600px;
 			}
 			
 			.pain-image-placeholder p {
-				color: #6c757d;
+				color: var(--color-text-muted);
 				font-style: italic;
+			}
+
+			.pain-image-asset {
+				display: block;
+				width: 100%;
+				max-width: 560px;
+				height: auto;
+				margin: 0 auto;
+				border-radius: 12px;
+				filter: contrast(1.1) brightness(0.95) saturate(1.05)
+					drop-shadow(0 22px 38px rgba(47, 50, 64, 0.35));
+				animation: floatBreath 5.8s ease-in-out 1.4s infinite;
+			}
+
+			.section-visual {
+				padding: 24px 0 70px;
+			}
+
+			.section-visual-beige {
+				background: var(--color-beige-soft);
+			}
+
+			.section-visual-white {
+				background: var(--color-white);
+			}
+
+			.visual-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 24px;
+			}
+
+			.visual-frame {
+				opacity: 0;
+				animation: fadeUpSoft 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+			}
+
+			.visual-frame.delay-1 {
+				animation-delay: 220ms;
+			}
+
+			.visual-frame.delay-2 {
+				animation-delay: 420ms;
+			}
+
+			.visual-single {
+				max-width: 720px;
+				margin: 26px auto 0;
+			}
+
+			.visual-single-small {
+				max-width: 360px;
+			}
+
+			.pk-visual {
+				display: block;
+				width: 100%;
+				height: auto;
+				border-radius: 16px;
+				filter: contrast(1.1) brightness(0.95) saturate(1.05)
+					drop-shadow(0 22px 38px rgba(47, 50, 64, 0.35));
+				animation: floatBreath 5.8s ease-in-out 1.4s infinite;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.hero h1,
+				.hero p,
+				.pain-image-placeholder,
+				.cta-section:first-of-type .btn-primary,
+				.pain-image-asset,
+				.visual-frame,
+				.pk-visual {
+					animation: none !important;
+					opacity: 1 !important;
+					transform: none !important;
+				}
 			}
 			
 			.pain-points {
 				padding: 60px 0;
-				background: white;
+				background: var(--color-white);
 			}
 			
 			.pain-points h2 {
 				text-align: center;
 				font-size: 1.75rem;
-				color: #495057;
+				color: var(--color-text);
 				margin-bottom: 30px;
 			}
 			
@@ -92,15 +241,15 @@
 				padding-left: 40px;
 				position: relative;
 				font-size: 1.1rem;
-				color: #495057;
-				border-bottom: 1px solid #e9ecef;
+				color: var(--color-text);
+				border-bottom: 1px solid var(--color-lavanda);
 			}
 			
 			.pain-list li:before {
 				content: "✕";
 				position: absolute;
 				left: 0;
-				color: #dc3545;
+				color: var(--color-lavanda);
 				font-weight: bold;
 			}
 			
@@ -109,25 +258,25 @@
 				margin-top: 30px;
 				font-size: 1.25rem;
 				font-weight: 600;
-				color: #764ba2;
+				color: var(--color-lavanda);
 			}
 			
 			.cta-section {
 				padding: 40px 0;
 				text-align: center;
-				background: white;
+				background: var(--color-white);
 			}
 			
 			.btn-primary {
 				display: inline-block;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, var(--color-ceruleo) 0%, var(--color-lavanda) 100%);
 				color: white;
 				padding: 20px 40px;
 				font-size: 1.1rem;
 				font-weight: 600;
 				text-decoration: none;
 				border-radius: 50px;
-				box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+				box-shadow: 0 4px 15px rgba(152, 193, 217, 0.45);
 				transition: transform 0.2s, box-shadow 0.2s;
 				border: none;
 				cursor: pointer;
@@ -135,19 +284,19 @@
 			
 			.btn-primary:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+				box-shadow: 0 6px 20px rgba(195, 177, 225, 0.55);
 			}
 			
 			.benefits {
 				padding: 80px 0;
-				background: #f8f9fa;
+				background: var(--color-beige-soft);
 			}
 			
 			.benefits h2 {
 				text-align: center;
 				font-size: 2rem;
 				margin-bottom: 40px;
-				color: #333;
+				color: var(--color-text);
 			}
 			
 			.benefits-grid {
@@ -158,15 +307,15 @@
 			}
 			
 			.benefit-item {
-				background: white;
+				background: var(--color-white);
 				padding: 25px;
 				border-radius: 12px;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+				box-shadow: 0 2px 10px rgba(195, 177, 225, 0.2);
 			}
 			
 			.benefit-item:before {
 				content: "✓";
-				color: #28a745;
+				color: var(--color-ceruleo);
 				font-weight: bold;
 				margin-right: 10px;
 			}
@@ -174,7 +323,7 @@
 			.benefits-closing {
 				text-align: center;
 				font-size: 1.2rem;
-				color: #495057;
+				color: var(--color-text);
 				max-width: 600px;
 				margin: 0 auto;
 				line-height: 1.8;
@@ -182,20 +331,20 @@
 			
 			.how-it-works {
 				padding: 80px 0;
-				background: white;
+				background: var(--color-white);
 			}
 			
 			.how-it-works h2 {
 				text-align: center;
 				font-size: 2rem;
 				margin-bottom: 50px;
-				color: #333;
+				color: var(--color-text);
 			}
 			
 			.how-intro {
 				text-align: center;
 				font-size: 1.1rem;
-				color: #6c757d;
+				color: var(--color-text-muted);
 				margin-bottom: 40px;
 				max-width: 600px;
 				margin-left: auto;
@@ -207,14 +356,14 @@
 				gap: 30px;
 				margin-bottom: 40px;
 				padding: 30px;
-				background: #f8f9fa;
+				background: var(--color-lavanda-soft);
 				border-radius: 12px;
 			}
 			
 			.feature-number {
 				width: 50px;
 				height: 50px;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, var(--color-ceruleo) 0%, var(--color-lavanda) 100%);
 				color: white;
 				border-radius: 50%;
 				display: flex;
@@ -228,7 +377,7 @@
 			.feature-content h3 {
 				font-size: 1.3rem;
 				margin-bottom: 15px;
-				color: #333;
+				color: var(--color-text);
 			}
 			
 			.feature-content ul {
@@ -240,28 +389,28 @@
 				padding: 8px 0;
 				padding-left: 25px;
 				position: relative;
-				color: #495057;
+				color: var(--color-text);
 			}
 			
 			.feature-content li:before {
 				content: "→";
 				position: absolute;
 				left: 0;
-				color: #667eea;
+				color: var(--color-ceruleo);
 			}
 			
 			.feature-highlight {
 				margin-top: 15px;
 				padding: 15px;
-				background: #e7f3ff;
+				background: var(--color-ceruleo-soft);
 				border-radius: 8px;
-				color: #495057;
+				color: var(--color-text);
 				font-style: italic;
 			}
 			
 			.reinforced-promise {
 				padding: 60px 0;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, var(--color-ceruleo) 0%, var(--color-lavanda) 100%);
 				color: white;
 				text-align: center;
 			}
@@ -281,20 +430,20 @@
 			
 			.offer {
 				padding: 80px 0;
-				background: #f8f9fa;
+				background: var(--color-beige-soft);
 			}
 			
 			.offer h2 {
 				text-align: center;
 				font-size: 2rem;
 				margin-bottom: 40px;
-				color: #333;
+				color: var(--color-text);
 			}
 			
 			.offer-badge {
 				display: inline-block;
-				background: #dc3545;
-				color: white;
+				background: var(--color-lavanda);
+				color: var(--color-text);
 				padding: 8px 20px;
 				border-radius: 20px;
 				font-size: 0.9rem;
@@ -310,33 +459,33 @@
 			}
 			
 			.offer-item {
-				background: white;
+				background: var(--color-white);
 				padding: 25px;
 				border-radius: 12px;
-				box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+				box-shadow: 0 2px 10px rgba(152, 193, 217, 0.25);
 			}
 			
 			.offer-item h3 {
 				font-size: 1.1rem;
-				color: #764ba2;
+				color: var(--color-lavanda);
 				margin-bottom: 10px;
 			}
 			
 			.offer-item p {
-				color: #6c757d;
+				color: var(--color-text-muted);
 				font-size: 0.95rem;
 			}
 			
 			.bonus-section {
-				background: #fff3cd;
-				border: 2px solid #ffc107;
+				background: var(--color-beige);
+				border: 2px solid var(--color-lavanda);
 				border-radius: 12px;
 				padding: 30px;
 				margin-top: 30px;
 			}
 			
 			.bonus-section h3 {
-				color: #856404;
+				color: var(--color-text);
 				margin-bottom: 20px;
 				text-align: center;
 			}
@@ -349,7 +498,7 @@
 				padding: 10px 0;
 				padding-left: 30px;
 				position: relative;
-				color: #856404;
+				color: var(--color-text);
 			}
 			
 			.bonus-list li:before {
@@ -362,18 +511,18 @@
 				text-align: center;
 				margin-top: 30px;
 				padding: 20px;
-				background: #e9ecef;
+				background: var(--color-ceruleo-soft);
 				border-radius: 8px;
 			}
 			
 			.value-highlight del {
-				color: #6c757d;
+				color: var(--color-text-muted);
 				font-size: 1.2rem;
 			}
 			
 			.value-highlight span {
 				display: block;
-				color: #28a745;
+				color: var(--color-lavanda);
 				font-size: 1.5rem;
 				font-weight: bold;
 				margin-top: 10px;
@@ -381,31 +530,31 @@
 			
 			.pricing {
 				padding: 60px 0;
-				background: white;
+				background: var(--color-white);
 				text-align: center;
 			}
 			
 			.pricing h2 {
 				font-size: 1.5rem;
-				color: #6c757d;
+				color: var(--color-text-muted);
 				margin-bottom: 30px;
 			}
 			
 			.price-tag {
 				font-size: 3rem;
 				font-weight: bold;
-				color: #764ba2;
+				color: var(--color-lavanda);
 				margin-bottom: 10px;
 			}
 			
 			.price-alt {
-				color: #6c757d;
+				color: var(--color-text-muted);
 				font-size: 1.1rem;
 				margin-bottom: 20px;
 			}
 			
 			.price-comparison {
-				color: #6c757d;
+				color: var(--color-text-muted);
 				font-style: italic;
 				max-width: 400px;
 				margin: 0 auto;
@@ -413,56 +562,56 @@
 			
 			.guarantee {
 				padding: 60px 0;
-				background: #d4edda;
+				background: var(--color-beige);
 				text-align: center;
 			}
 			
 			.guarantee h2 {
 				font-size: 1.75rem;
-				color: #155724;
+				color: var(--color-text);
 				margin-bottom: 20px;
 			}
 			
 			.guarantee p {
 				max-width: 600px;
 				margin: 0 auto;
-				color: #155724;
+				color: var(--color-text);
 				font-size: 1.1rem;
 				line-height: 1.8;
 			}
 			
 			.faq {
 				padding: 80px 0;
-				background: white;
+				background: var(--color-white);
 			}
 			
 			.faq h2 {
 				text-align: center;
 				font-size: 2rem;
 				margin-bottom: 40px;
-				color: #333;
+				color: var(--color-text);
 			}
 			
 			.faq-item {
 				margin-bottom: 20px;
-				border-bottom: 1px solid #e9ecef;
+				border-bottom: 1px solid var(--color-lavanda);
 				padding-bottom: 20px;
 			}
 			
 			.faq-item h3 {
 				font-size: 1.1rem;
-				color: #764ba2;
+				color: var(--color-lavanda);
 				margin-bottom: 10px;
 			}
 			
 			.faq-item p {
-				color: #495057;
+				color: var(--color-text);
 				padding-left: 20px;
 			}
 			
 			.closing {
 				padding: 80px 0;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, var(--color-ceruleo) 0%, var(--color-lavanda) 100%);
 				color: white;
 				text-align: center;
 			}
@@ -475,24 +624,41 @@
 			}
 			
 			.closing .btn-primary {
-				background: white;
-				color: #764ba2;
+				background: var(--color-white);
+				color: var(--color-lavanda);
 				box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 			}
 			
 			.closing .btn-primary:hover {
-				background: #f8f9fa;
+				background: var(--color-beige-soft);
 			}
 			
 			footer {
 				padding: 30px 0;
-				background: #343a40;
-				color: #adb5bd;
+				background: var(--color-lavanda);
+				color: var(--color-text);
 				text-align: center;
 				font-size: 0.9rem;
 			}
 			
 			@media (max-width: 768px) {
+				.visual-single-small {
+					max-width: 100%;
+				}
+
+				.section-visual {
+					padding: 12px 0 44px;
+				}
+
+				.visual-grid {
+					grid-template-columns: 1fr;
+					gap: 16px;
+				}
+
+				.pain-image-placeholder {
+					margin-top: -60px;
+				}
+
 				.hero h1 {
 					font-size: 1.75rem;
 				}
@@ -529,8 +695,7 @@
 		<section class="pain-image">
 			<div class="container">
 				<div class="pain-image-placeholder">
-					<p><strong>📷 Imagen sugerida:</strong><br><br>
-					Madre o padre de noche mirando el monitor del bebé, con expresión de duda y cansancio. Luz tenue. Sensación de responsabilidad y agotamiento.</p>
+					<img class="pain-image-asset" src="/2-PK.svg" alt="Padre o madre con bebé en escena emocional" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
@@ -572,6 +737,9 @@
 					Vas a dejar de improvisar. Vas a dejar de comparar. Vas a dejar de sobrepensar. 
 					<br><strong>Y vas a empezar a sentir tranquilidad real.</strong>
 				</p>
+				<div class="visual-frame visual-single delay-1">
+					<img class="pk-visual" src="/3-PK.svg" alt="Momentos cotidianos de crianza con bebé" loading="lazy" decoding="async" />
+				</div>
 			</div>
 		</section>
 
@@ -630,6 +798,9 @@
 		<section class="reinforced-promise">
 			<div class="container">
 				<p>En 30 días no tendrás más información. Tendrás algo más valioso:<br><strong>Tranquilidad estructurada.</strong></p>
+				<div class="visual-frame visual-single visual-single-small delay-1">
+					<img class="pk-visual" src="/1-PK.svg" alt="Familia acompañando el desarrollo del bebé" loading="lazy" decoding="async" />
+				</div>
 			</div>
 		</section>
 
@@ -672,6 +843,10 @@
 
 				<div class="value-highlight">
 					<p>Valor real percibido: <del>más de $300 USD</del></p>
+				</div>
+
+				<div class="visual-frame visual-single delay-2">
+					<img class="pk-visual" src="/4-PK.svg" alt="Interacción emocional entre padre, madre y bebé" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
