@@ -1,0 +1,751 @@
+---
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>PEKEMIND - Tranquilidad para padres de bebés</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background: #fff;
+			}
+			
+			.container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+			
+			.hero {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 80px 0;
+				text-align: center;
+			}
+			
+			.hero h1 {
+				font-size: 2.5rem;
+				margin-bottom: 20px;
+				line-height: 1.2;
+			}
+			
+			.hero p {
+				font-size: 1.25rem;
+				max-width: 600px;
+				margin: 0 auto;
+				opacity: 0.95;
+			}
+			
+			.pain-image {
+				padding: 60px 0;
+				background: #f8f9fa;
+				text-align: center;
+			}
+			
+			.pain-image-placeholder {
+				background: #e9ecef;
+				border: 3px dashed #adb5bd;
+				border-radius: 12px;
+				padding: 60px 40px;
+				margin: 0 auto;
+				max-width: 600px;
+			}
+			
+			.pain-image-placeholder p {
+				color: #6c757d;
+				font-style: italic;
+			}
+			
+			.pain-points {
+				padding: 60px 0;
+				background: white;
+			}
+			
+			.pain-points h2 {
+				text-align: center;
+				font-size: 1.75rem;
+				color: #495057;
+				margin-bottom: 30px;
+			}
+			
+			.pain-list {
+				list-style: none;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			.pain-list li {
+				padding: 15px 0;
+				padding-left: 40px;
+				position: relative;
+				font-size: 1.1rem;
+				color: #495057;
+				border-bottom: 1px solid #e9ecef;
+			}
+			
+			.pain-list li:before {
+				content: "✕";
+				position: absolute;
+				left: 0;
+				color: #dc3545;
+				font-weight: bold;
+			}
+			
+			.pain-closing {
+				text-align: center;
+				margin-top: 30px;
+				font-size: 1.25rem;
+				font-weight: 600;
+				color: #764ba2;
+			}
+			
+			.cta-section {
+				padding: 40px 0;
+				text-align: center;
+				background: white;
+			}
+			
+			.btn-primary {
+				display: inline-block;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				padding: 20px 40px;
+				font-size: 1.1rem;
+				font-weight: 600;
+				text-decoration: none;
+				border-radius: 50px;
+				box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+				transition: transform 0.2s, box-shadow 0.2s;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+			}
+			
+			.benefits {
+				padding: 80px 0;
+				background: #f8f9fa;
+			}
+			
+			.benefits h2 {
+				text-align: center;
+				font-size: 2rem;
+				margin-bottom: 40px;
+				color: #333;
+			}
+			
+			.benefits-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 20px;
+				margin-bottom: 30px;
+			}
+			
+			.benefit-item {
+				background: white;
+				padding: 25px;
+				border-radius: 12px;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+			}
+			
+			.benefit-item:before {
+				content: "✓";
+				color: #28a745;
+				font-weight: bold;
+				margin-right: 10px;
+			}
+			
+			.benefits-closing {
+				text-align: center;
+				font-size: 1.2rem;
+				color: #495057;
+				max-width: 600px;
+				margin: 0 auto;
+				line-height: 1.8;
+			}
+			
+			.how-it-works {
+				padding: 80px 0;
+				background: white;
+			}
+			
+			.how-it-works h2 {
+				text-align: center;
+				font-size: 2rem;
+				margin-bottom: 50px;
+				color: #333;
+			}
+			
+			.how-intro {
+				text-align: center;
+				font-size: 1.1rem;
+				color: #6c757d;
+				margin-bottom: 40px;
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.feature {
+				display: flex;
+				gap: 30px;
+				margin-bottom: 40px;
+				padding: 30px;
+				background: #f8f9fa;
+				border-radius: 12px;
+			}
+			
+			.feature-number {
+				width: 50px;
+				height: 50px;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.5rem;
+				font-weight: bold;
+				flex-shrink: 0;
+			}
+			
+			.feature-content h3 {
+				font-size: 1.3rem;
+				margin-bottom: 15px;
+				color: #333;
+			}
+			
+			.feature-content ul {
+				list-style: none;
+				padding-left: 0;
+			}
+			
+			.feature-content li {
+				padding: 8px 0;
+				padding-left: 25px;
+				position: relative;
+				color: #495057;
+			}
+			
+			.feature-content li:before {
+				content: "→";
+				position: absolute;
+				left: 0;
+				color: #667eea;
+			}
+			
+			.feature-highlight {
+				margin-top: 15px;
+				padding: 15px;
+				background: #e7f3ff;
+				border-radius: 8px;
+				color: #495057;
+				font-style: italic;
+			}
+			
+			.reinforced-promise {
+				padding: 60px 0;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				text-align: center;
+			}
+			
+			.reinforced-promise p {
+				font-size: 1.5rem;
+				max-width: 700px;
+				margin: 0 auto;
+				line-height: 1.6;
+			}
+			
+			.reinforced-promise strong {
+				display: block;
+				margin-top: 15px;
+				font-size: 1.75rem;
+			}
+			
+			.offer {
+				padding: 80px 0;
+				background: #f8f9fa;
+			}
+			
+			.offer h2 {
+				text-align: center;
+				font-size: 2rem;
+				margin-bottom: 40px;
+				color: #333;
+			}
+			
+			.offer-badge {
+				display: inline-block;
+				background: #dc3545;
+				color: white;
+				padding: 8px 20px;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				font-weight: 600;
+				margin-bottom: 30px;
+			}
+			
+			.offer-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 20px;
+				margin-bottom: 30px;
+			}
+			
+			.offer-item {
+				background: white;
+				padding: 25px;
+				border-radius: 12px;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+			}
+			
+			.offer-item h3 {
+				font-size: 1.1rem;
+				color: #764ba2;
+				margin-bottom: 10px;
+			}
+			
+			.offer-item p {
+				color: #6c757d;
+				font-size: 0.95rem;
+			}
+			
+			.bonus-section {
+				background: #fff3cd;
+				border: 2px solid #ffc107;
+				border-radius: 12px;
+				padding: 30px;
+				margin-top: 30px;
+			}
+			
+			.bonus-section h3 {
+				color: #856404;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+			
+			.bonus-list {
+				list-style: none;
+			}
+			
+			.bonus-list li {
+				padding: 10px 0;
+				padding-left: 30px;
+				position: relative;
+				color: #856404;
+			}
+			
+			.bonus-list li:before {
+				content: "🎁";
+				position: absolute;
+				left: 0;
+			}
+			
+			.value-highlight {
+				text-align: center;
+				margin-top: 30px;
+				padding: 20px;
+				background: #e9ecef;
+				border-radius: 8px;
+			}
+			
+			.value-highlight del {
+				color: #6c757d;
+				font-size: 1.2rem;
+			}
+			
+			.value-highlight span {
+				display: block;
+				color: #28a745;
+				font-size: 1.5rem;
+				font-weight: bold;
+				margin-top: 10px;
+			}
+			
+			.pricing {
+				padding: 60px 0;
+				background: white;
+				text-align: center;
+			}
+			
+			.pricing h2 {
+				font-size: 1.5rem;
+				color: #6c757d;
+				margin-bottom: 30px;
+			}
+			
+			.price-tag {
+				font-size: 3rem;
+				font-weight: bold;
+				color: #764ba2;
+				margin-bottom: 10px;
+			}
+			
+			.price-alt {
+				color: #6c757d;
+				font-size: 1.1rem;
+				margin-bottom: 20px;
+			}
+			
+			.price-comparison {
+				color: #6c757d;
+				font-style: italic;
+				max-width: 400px;
+				margin: 0 auto;
+			}
+			
+			.guarantee {
+				padding: 60px 0;
+				background: #d4edda;
+				text-align: center;
+			}
+			
+			.guarantee h2 {
+				font-size: 1.75rem;
+				color: #155724;
+				margin-bottom: 20px;
+			}
+			
+			.guarantee p {
+				max-width: 600px;
+				margin: 0 auto;
+				color: #155724;
+				font-size: 1.1rem;
+				line-height: 1.8;
+			}
+			
+			.faq {
+				padding: 80px 0;
+				background: white;
+			}
+			
+			.faq h2 {
+				text-align: center;
+				font-size: 2rem;
+				margin-bottom: 40px;
+				color: #333;
+			}
+			
+			.faq-item {
+				margin-bottom: 20px;
+				border-bottom: 1px solid #e9ecef;
+				padding-bottom: 20px;
+			}
+			
+			.faq-item h3 {
+				font-size: 1.1rem;
+				color: #764ba2;
+				margin-bottom: 10px;
+			}
+			
+			.faq-item p {
+				color: #495057;
+				padding-left: 20px;
+			}
+			
+			.closing {
+				padding: 80px 0;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				text-align: center;
+			}
+			
+			.closing p {
+				font-size: 2rem;
+				max-width: 700px;
+				margin: 0 auto 30px;
+				line-height: 1.4;
+			}
+			
+			.closing .btn-primary {
+				background: white;
+				color: #764ba2;
+				box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+			}
+			
+			.closing .btn-primary:hover {
+				background: #f8f9fa;
+			}
+			
+			footer {
+				padding: 30px 0;
+				background: #343a40;
+				color: #adb5bd;
+				text-align: center;
+				font-size: 0.9rem;
+			}
+			
+			@media (max-width: 768px) {
+				.hero h1 {
+					font-size: 1.75rem;
+				}
+				
+				.hero p {
+					font-size: 1.1rem;
+				}
+				
+				.feature {
+					flex-direction: column;
+					gap: 20px;
+				}
+				
+				.closing p {
+					font-size: 1.5rem;
+				}
+				
+				.price-tag {
+					font-size: 2.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<h1>Deja de preguntarte cada día si lo estás haciendo bien con tu bebé.</h1>
+				<p>En solo 5 minutos al día sabrás exactamente qué hacer, qué observar y podrás acostarte con la tranquilidad de que tu bebé va por buen camino.</p>
+			</div>
+		</section>
+
+		<!-- Pain Image Section -->
+		<section class="pain-image">
+			<div class="container">
+				<div class="pain-image-placeholder">
+					<p><strong>📷 Imagen sugerida:</strong><br><br>
+					Madre o padre de noche mirando el monitor del bebé, con expresión de duda y cansancio. Luz tenue. Sensación de responsabilidad y agotamiento.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pain Points Section -->
+		<section class="pain-points">
+			<div class="container">
+				<h2>¿Te suena familiar?</h2>
+				<ul class="pain-list">
+					<li>Googleando a las 11:47 p.m. "¿Es normal que no gatee aún?"</li>
+					<li>Comparando a tu bebé con el hijo de tu amiga</li>
+					<li>Sintiendo culpa por no saber si estás estimulando lo suficiente</li>
+					<li>Discutiendo con tu pareja porque no saben si deben preocuparse o no</li>
+					<li>Preguntándote en silencio: "¿Y si estoy haciendo algo mal?"</li>
+				</ul>
+				<p class="pain-closing">No necesitas más información. Necesitas claridad.</p>
+			</div>
+		</section>
+
+		<!-- CTA Section 1 -->
+		<section class="cta-section">
+			<div class="container">
+				<a href="#oferta" class="btn-primary">QUIERO DEJAR DE DUDAR Y TENER CLARIDAD DIARIA</a>
+			</div>
+		</section>
+
+		<!-- Benefits Section -->
+		<section class="benefits">
+			<div class="container">
+				<h2>Con PEKEMIND vas a lograr:</h2>
+				<div class="benefits-grid">
+					<div class="benefit-item">Saber exactamente qué hacer cada día con tu bebé</div>
+					<div class="benefit-item">Entender qué es normal y qué no lo es</div>
+					<div class="benefit-item">Reducir tu ansiedad parental</div>
+					<div class="benefit-item">Tomar decisiones sin pánico</div>
+					<div class="benefit-item">Sentirte seguro/a como mamá o papá</div>
+				</div>
+				<p class="benefits-closing">
+					Vas a dejar de improvisar. Vas a dejar de comparar. Vas a dejar de sobrepensar. 
+					<br><strong>Y vas a empezar a sentir tranquilidad real.</strong>
+				</p>
+			</div>
+		</section>
+
+		<!-- How It Works Section -->
+		<section class="how-it-works">
+			<div class="container">
+				<h2>¿Cómo lo vas a lograr?</h2>
+				<p class="how-intro">No con un curso largo. No con 1,800 actividades. No con teorías complicadas. Lo lograrás con un sistema diario simple:</p>
+				
+				<div class="feature">
+					<div class="feature-number">1</div>
+					<div class="feature-content">
+						<h3>Una misión clara por día</h3>
+						<ul>
+							<li>Qué estimular</li>
+							<li>Qué actividad hacer (5-10 min)</li>
+							<li>Qué observar</li>
+						</ul>
+						<p class="feature-highlight">Y te recuerda que no necesitas hacerlo perfecto</p>
+					</div>
+				</div>
+
+				<div class="feature">
+					<div class="feature-number">2</div>
+					<div class="feature-content">
+						<h3>Check-in emocional diario</h3>
+						<p>La app te pregunta cómo te sientes. Y según tu respuesta:</p>
+						<ul>
+							<li>Te tranquiliza</li>
+							<li>Te explica lo que es normal</li>
+							<li>Te da un audio breve de 2 minutos para bajar la ansiedad</li>
+						</ul>
+						<p class="feature-highlight">Porque si tú estás bien, tu bebé también.</p>
+					</div>
+				</div>
+
+				<div class="feature">
+					<div class="feature-number">3</div>
+					<div class="feature-content">
+						<h3>Chat de dudas que primero te calma y luego te guía</h3>
+						<p>No es solo información. Primero baja tu ansiedad. Luego explica. Después te dice qué hacer hoy. Y solo te alerta cuando realmente es necesario.</p>
+					</div>
+				</div>
+
+				<div class="feature">
+					<div class="feature-number">4</div>
+					<div class="feature-content">
+						<h3>Evaluación mensual sin alarmismo</h3>
+						<p>En minutos sabrás si todo está dentro del rango esperado o si hay un área que simplemente debes observar. Sin miedo. Sin comparaciones tóxicas.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Reinforced Promise Section -->
+		<section class="reinforced-promise">
+			<div class="container">
+				<p>En 30 días no tendrás más información. Tendrás algo más valioso:<br><strong>Tranquilidad estructurada.</strong></p>
+			</div>
+		</section>
+
+		<!-- Offer Section -->
+		<section class="offer" id="oferta">
+			<div class="container">
+				<h2>Si te unes hoy como fundador obtienes:</h2>
+				
+				<div style="text-align: center;">
+					<div class="offer-badge">🎉 OFERTA ESPECIAL FUNDADOR</div>
+				</div>
+				
+				<div class="offer-grid">
+					<div class="offer-item">
+						<h3>🎯 Misiones Diarias Personalizadas</h3>
+						<p>Una guía clara cada día durante todo el año.</p>
+					</div>
+					<div class="offer-item">
+						<h3>🧘 Check-in Emocional + Audios Calmantes</h3>
+						<p>Acompañamiento real, no solo contenido.</p>
+					</div>
+					<div class="offer-item">
+						<h3>💬 Chat Ilimitado de Dudas</h3>
+						<p>Respuestas estructuradas que primero te tranquilizan.</p>
+					</div>
+					<div class="offer-item">
+						<h3>📊 Evaluaciones Mensuales de Desarrollo</h3>
+						<p>Claridad sin alarmismo.</p>
+					</div>
+				</div>
+
+				<div class="bonus-section">
+					<h3>🎁 BONOS EXCLUSIVOS FUNDADOR</h3>
+					<ul class="bonus-list">
+						<li><strong>Kit "Primeros 30 Días Sin Pánico"</strong> - Checklist + guía rápida para empezar con seguridad</li>
+						<li><strong>Precio Fundador Congelado</strong> - No pagarás el precio completo durante el primer año</li>
+						<li><strong>Acceso Prioritario en Beta</strong> - Tus dudas serán priorizadas</li>
+					</ul>
+				</div>
+
+				<div class="value-highlight">
+					<p>Valor real percibido: <del>más de $300 USD</del></p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing Section -->
+		<section class="pricing">
+			<div class="container">
+				<h2>Hoy puedes acceder por:</h2>
+				<div class="price-tag">$29.99 USD</div>
+				<p class="price-alt">por todo el año<br>(o $3.99 mensual)</p>
+				<p class="price-comparison">Menos de lo que cuesta una salida a comer. Pero con impacto todos los días.</p>
+			</div>
+		</section>
+
+		<!-- CTA Section 2 -->
+		<section class="cta-section">
+			<div class="container">
+				<a href="#" class="btn-primary">QUIERO MI ACCESO FUNDADOR AHORA</a>
+			</div>
+		</section>
+
+		<!-- Guarantee Section -->
+		<section class="guarantee">
+			<div class="container">
+				<h2>🛡️ Garantía "Tranquilidad o No Pagas"</h2>
+				<p>Prueba PEKEMIND durante 30 días. Si no sientes más claridad, más seguridad y menos ansiedad, te devolvemos el 100% de tu dinero. Sin preguntas incómodas. Sin explicaciones largas.</p>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section class="faq">
+			<div class="container">
+				<h2>Preguntas Frecuentes</h2>
+				
+				<div class="faq-item">
+					<h3>¿Y si mi bebé es diferente?</h3>
+					<p>La app personaliza según edad y considera prematuridad. No comparamos bebés. Guiamos procesos.</p>
+				</div>
+				
+				<div class="faq-item">
+					<h3>¿Esto reemplaza al pediatra?</h3>
+					<p>No. Lo complementa. Te ayuda a saber cuándo todo es normal y cuándo sí deberías consultar.</p>
+				</div>
+				
+				<div class="faq-item">
+					<h3>No tengo tiempo para algo complejo.</h3>
+					<p>Perfecto. Está diseñado para 5 minutos al día.</p>
+				</div>
+				
+				<div class="faq-item">
+					<h3>¿Y si me genera más ansiedad?</h3>
+					<p>El sistema está diseñado exactamente para lo contrario: primero tranquilizar, luego explicar.</p>
+				</div>
+				
+				<div class="faq-item">
+					<h3>¿Funciona si mi bebé ya tiene más de un año?</h3>
+					<p>Sí. Está diseñado para bebés de 0 a 18 meses.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Closing Section -->
+		<section class="closing">
+			<div class="container">
+				<p>Tu bebé no necesita un padre perfecto. Necesita un padre tranquilo.</p>
+				<a href="#" class="btn-primary">QUIERO MI ACCESO FUNDADOR AHORA</a>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p>© 2025 PEKEMIND. Todos los derechos reservados.</p>
+			</div>
+		</footer>
+	</body>
+</html>
