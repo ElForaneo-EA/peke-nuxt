@@ -1,11 +1,12 @@
 ---
+const base = import.meta.env.BASE_URL;
 ---
 
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+		<link rel="icon" href={`${base}favicon.ico`} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -695,7 +696,7 @@
 		<section class="pain-image">
 			<div class="container">
 				<div class="pain-image-placeholder">
-					<img class="pain-image-asset" src="/2-PK.svg" alt="Padre o madre con bebé en escena emocional" loading="lazy" decoding="async" />
+					<img class="pain-image-asset" src={`${base}2-PK.svg`} alt="Padre o madre con bebé en escena emocional" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
@@ -738,7 +739,7 @@
 					<br><strong>Y vas a empezar a sentir tranquilidad real.</strong>
 				</p>
 				<div class="visual-frame visual-single delay-1">
-					<img class="pk-visual" src="/3-PK.svg" alt="Momentos cotidianos de crianza con bebé" loading="lazy" decoding="async" />
+					<img class="pk-visual" src={`${base}3-PK.svg`} alt="Momentos cotidianos de crianza con bebé" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
@@ -799,7 +800,7 @@
 			<div class="container">
 				<p>En 30 días no tendrás más información. Tendrás algo más valioso:<br><strong>Tranquilidad estructurada.</strong></p>
 				<div class="visual-frame visual-single visual-single-small delay-1">
-					<img class="pk-visual" src="/1-PK.svg" alt="Familia acompañando el desarrollo del bebé" loading="lazy" decoding="async" />
+					<img class="pk-visual" src={`${base}1-PK.svg`} alt="Familia acompañando el desarrollo del bebé" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
@@ -846,7 +847,7 @@
 				</div>
 
 				<div class="visual-frame visual-single delay-2">
-					<img class="pk-visual" src="/4-PK.svg" alt="Interacción emocional entre padre, madre y bebé" loading="lazy" decoding="async" />
+					<img class="pk-visual" src={`${base}4-PK.svg`} alt="Interacción emocional entre padre, madre y bebé" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</section>
