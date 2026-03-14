@@ -298,16 +298,16 @@ const base = useRuntimeConfig().app.baseURL
 
     <!-- ═══ PRICING ═══ -->
     <section class="px-6 py-24 text-center md:py-36">
+      <div class="mx-auto mb-12 max-w-4xl">
+        <img
+          :src="`${base}Pekemind.svg`"
+          alt="PEKEMIND app preview"
+          class="w-full rounded-lg"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div class="mx-auto max-w-lg">
-        <div class="mx-auto mb-10 max-w-2xl">
-          <img
-            :src="`${base}Pekemind.svg`"
-            alt="PEKEMIND app preview"
-            class="w-full rounded-lg"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
         <p class="text-sm uppercase tracking-[0.3em] text-surface-400">Hoy puedes acceder por</p>
         <div class="mt-8 font-heading text-[clamp(3.5rem,10vw,8rem)] font-800 leading-none tracking-tighter-2 text-accent-ceruleo">$29.99</div>
         <p class="mt-2 text-sm uppercase tracking-[0.2em] text-accent-ceruleo/70">USD</p>
