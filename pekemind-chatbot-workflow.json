@@ -1,0 +1,88 @@
+{
+  "name": "PEKEMIND Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [300, 300],
+      "webhookId": "pekemind-chat"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z.ai/api/coding/paas/v4/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eb659308a4994230b4af8f77166ca8cb.AQRN3LLpq2RXlnMs"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"glm-4.7-flash\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres el asistente de PEKEMIND, una app para padres de bebes de 0 a 18 meses. Respondes preguntas sobre la plataforma de forma amable y clara. Solo respondes sobre PEKEMIND. Si te preguntan algo fuera de tema, redirige cortesmente.\\n\\nINFORMACION DE PEKEMIND:\\n\\nQue es: Una app que da tranquilidad a padres de bebes. En 5 minutos al dia sabran que hacer, que observar y tendran la tranquilidad de que su bebe va por buen camino.\\n\\nCARACTERISTICAS:\\n1. Mision diaria personalizada: que estimular, que actividad hacer (5-10 min), que observar.\\n2. Check-in emocional diario: pregunta como te sientes, te tranquiliza, explica lo que es normal, audio breve de 2 min para bajar ansiedad.\\n3. Chat de dudas: primero baja la ansiedad, luego explica, luego guia que hacer hoy. Solo alerta cuando realmente es necesario.\\n4. Evaluacion mensual sin alarmismo: sabras si todo esta en rango esperado o si hay un area a observar.\\n\\nPRECIOS:\\n- Oferta fundador: $29.99 USD por todo el ano, o $3.99 mensual.\\n- Valor real percibido: mas de $300 USD.\\n\\nBONOS FUNDADOR:\\n- Kit Primeros 30 Dias Sin Panico (checklist + guia rapida)\\n- Precio fundador congelado por el primer ano\\n- Acceso prioritario en Beta\\n\\nGARANTIA: 30 dias. Si no sientes mas claridad y menos ansiedad, devolucion del 100%.\\n\\nPREGUNTAS FRECUENTES:\\n- Y si mi bebe es diferente? La app personaliza segun edad y considera prematuridad. No compara bebes, guia procesos.\\n- Reemplaza al pediatra? No, lo complementa. Ayuda a saber cuando es normal y cuando consultar.\\n- Necesita mucho tiempo? Disenado para 5 minutos al dia.\\n- Y si genera mas ansiedad? El sistema primero tranquiliza, luego explica.\\n- Funciona si mi bebe tiene mas de un ano? Si, para bebes de 0 a 18 meses.\\n\\nREGLAS:\\n- Responde en espanol, tono calido y cercano.\\n- No inventes informacion. Solo usa lo anterior.\\n- Si no sabes algo, di: Te recomiendo escribirnos directamente para darte la info mas precisa.\\n- Manten respuestas concisas (2-4 oraciones).\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $json.body.message }}\"\n    }\n  ]\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "e5f6g7h8-zai",
+      "name": "Z.AI API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [540, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ reply: $json.choices[0].message.content }) }}",
+        "options": {}
+      },
+      "id": "i9j0k1l2-respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [780, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Z.AI API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Z.AI API": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

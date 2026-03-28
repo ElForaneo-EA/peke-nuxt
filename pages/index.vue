@@ -417,6 +417,9 @@ const base = useRuntimeConfig().app.baseURL
         <p class="text-xs uppercase tracking-[0.2em] text-accent-beige">Tranquilidad para padres</p>
       </div>
     </footer>
+
+    <!-- ═══ CHAT WIDGET ═══ -->
+    <ChatWidget />
   </div>
 </template>
 

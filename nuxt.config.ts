@@ -1,13 +1,3 @@
-const repository = process.env.GITHUB_REPOSITORY ?? '';
-const [owner = '', repo = ''] = repository.split('/');
-const isUserSite =
-  owner && repo && repo.toLowerCase() === `${owner.toLowerCase()}.github.io`;
-
-const site = owner
-  ? `https://${owner}.github.io`
-  : 'https://example.github.io';
-const base = owner && repo && !isUserSite ? `/${repo}/` : '/';
-
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -18,7 +8,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: base,
+    baseURL: '/',
     head: {
       htmlAttrs: { lang: 'es' },
       meta: [
@@ -27,7 +17,7 @@ export default defineNuxtConfig({
       ],
       title: 'PEKEMIND - Tranquilidad para padres de bebés',
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',
@@ -39,12 +29,6 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
         },
       ],
-    },
-  },
-
-  runtimeConfig: {
-    public: {
-      site,
     },
   },
 });
