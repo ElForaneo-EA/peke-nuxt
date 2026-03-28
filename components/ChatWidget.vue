@@ -1,14 +1,13 @@
 <template>
-  <!-- Floating chat button -->
   <div class="fixed bottom-6 right-6 z-50">
     <!-- Chat window -->
     <Transition name="chat-slide">
       <div
         v-if="isOpen"
-        class="absolute bottom-18 right-0 flex h-[480px] w-[370px] flex-col overflow-hidden rounded-2xl border border-surface-200 bg-white shadow-2xl"
+        class="fixed inset-4 bottom-20 right-4 flex flex-col overflow-hidden rounded-2xl border border-surface-200 bg-white shadow-2xl sm:static sm:inset-auto sm:bottom-auto sm:right-auto sm:mb-4 sm:h-[500px] sm:w-[380px]"
       >
         <!-- Header -->
-        <div class="flex items-center gap-3 border-b border-surface-200 bg-surface-50 px-5 py-4">
+        <div class="flex shrink-0 items-center gap-3 border-b border-surface-200 bg-surface-50 px-5 py-4">
           <div class="flex h-9 w-9 items-center justify-center rounded-full bg-accent-ceruleo/15">
             <svg class="h-5 w-5 text-accent-ceruleo" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -83,7 +82,7 @@
         </div>
 
         <!-- Input -->
-        <div class="border-t border-surface-200 bg-white px-4 py-3">
+        <div class="shrink-0 border-t border-surface-200 bg-white px-4 py-3">
           <form @submit.prevent="sendMessage" class="flex items-center gap-2">
             <input
               ref="inputRef"
@@ -91,14 +90,14 @@
               type="text"
               placeholder="Escribe tu pregunta..."
               :disabled="isLoading"
-              class="flex-1 rounded-full border border-surface-200 bg-surface-50 px-4 py-2.5 text-sm text-surface-900 outline-none transition-colors placeholder:text-surface-400 focus:border-accent-ceruleo focus:bg-white disabled:opacity-50"
+              class="flex-1 rounded-full border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors placeholder:text-surface-400 focus:border-accent-ceruleo focus:bg-white disabled:opacity-50"
             />
             <button
               type="submit"
               :disabled="isLoading || !input.trim()"
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-ceruleo text-surface-900 transition-all hover:bg-accent disabled:opacity-40 disabled:hover:bg-accent-ceruleo"
+              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-ceruleo text-surface-900 transition-all hover:bg-accent disabled:opacity-40 disabled:hover:bg-accent-ceruleo"
             >
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
               </svg>
             </button>
@@ -110,8 +109,7 @@
     <!-- Floating button -->
     <button
       @click="isOpen = !isOpen"
-      class="group flex h-14 w-14 items-center justify-center rounded-full bg-accent-ceruleo shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-      :class="isOpen ? 'rotate-0' : ''"
+      class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-ceruleo shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
     >
       <Transition mode="out-in" name="icon-fade">
         <svg v-if="!isOpen" key="chat" class="h-6 w-6 text-surface-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
