@@ -42,10 +42,20 @@ export default defineNuxtConfig({
       theme_color: '#98C1D9',
       icons: [
         {
-          src: '/pekemind_logo_v4.svg',
+          src: '/pwa-192.png',
           sizes: '192x192',
-          type: 'image/svg+xml',
-          purpose: 'any maskable',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable',
         },
       ],
     },
