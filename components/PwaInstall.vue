@@ -20,10 +20,20 @@ const canInstall = ref(false)
 let deferredPrompt: any = null
 
 onMounted(() => {
+  // Already installed as PWA? Don't show button
+  if (window.matchMedia('(display-mode: standalone)').matches) return
+
+  // Chrome / Android: listen for beforeinstallprompt
   window.addEventListener('beforeinstallprompt', (e: Event) => {
     e.preventDefault()
     deferredPrompt = e
     canInstall.value = true
+  })
+
+  // If user installed, hide button
+  window.addEventListener('appinstalled', () => {
+    canInstall.value = false
+    deferredPrompt = null
   })
 })
 
