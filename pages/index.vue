@@ -14,6 +14,9 @@ const base = useRuntimeConfig().app.baseURL
       />
     </div>
 
+    <!-- ═══ PWA INSTALL BUTTON ═══ -->
+    <PwaInstall />
+
     <!-- ═══ HERO ═══ -->
     <section class="relative flex flex-col items-center justify-center overflow-hidden px-6 pb-16 pt-28 md:pt-32 md:pb-20">
       <div class="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-ceruleo/10 blur-[120px]" />
