@@ -90,7 +90,7 @@
               type="text"
               placeholder="Escribe tu pregunta..."
               :disabled="isLoading"
-              class="flex-1 rounded-full border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors placeholder:text-surface-400 focus:border-accent-ceruleo focus:bg-white disabled:opacity-50"
+              class="flex-1 rounded-full border border-surface-200 bg-surface-50 px-4 py-3 text-sm text-surface-900 outline-none transition-colors placeholder:text-surface-400 focus:border-accent-ceruleo focus:bg-white disabled:opacity-50 disabled:hover:bg-accent-ceruleo"
             />
             <button
               type="submit"
